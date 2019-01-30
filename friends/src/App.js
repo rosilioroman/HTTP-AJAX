@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import AddFriendForm from './components/AddFriendForm';
-import FriendsList from './components/Friends';
+import FriendsList from './components/FriendsList';
 
 import './App.css';
 
@@ -46,15 +46,30 @@ class App extends Component {
     });
   }
 
+  //handle the deletion of a friend
+  deleteFriendHandler = (friendId) => {
+    axios.delete(`http://localhost:5000/friends/${friendId}`)
+    .then(res => this.setState({ friends: res.data }))
+    .catch(err => console.log(err));
+  }
+
+  //handle friend updates
+  updateFriendHandler = (friendId) => {
+    
+  }
+
   render() {
     return (
       <div className="App">
-        <FriendsList friendsList={this.state.friends} />
         <AddFriendForm 
           inputChangeHandler={this.inputChangeHandler} 
           submitHandler={this.addFriendHandler} 
           currentState={this.state} 
         />
+        <FriendsList 
+          friendsList={this.state.friends} 
+          deleteFriend={this.deleteFriendHandler}
+          />
       </div>
     );
   }
