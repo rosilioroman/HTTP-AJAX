@@ -32,14 +32,29 @@ class App extends Component {
   //handles form submission
   addFriendHandler = e => {
     e.preventDefault();
-
+    axios.post('http://localhost:5000/friends', {
+      name: this.state.nameInput,
+      age: parseInt(this.state.ageInput, 10),
+      email: this.state.emailInput
+    })
+    .then(res => this.setState({ friends: res.data }))
+    .catch(err => console.log(err));
+    this.setState({
+      nameInput: '',
+      ageInput: '',
+      emailInput: ''
+    });
   }
 
   render() {
     return (
       <div className="App">
         <FriendsList friendsList={this.state.friends} />
-        <AddFriendForm inputChangeHandler={this.inputChangeHandler} />
+        <AddFriendForm 
+          inputChangeHandler={this.inputChangeHandler} 
+          submitHandler={this.addFriendHandler} 
+          currentState={this.state} 
+        />
       </div>
     );
   }
