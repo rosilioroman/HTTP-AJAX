@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import AddFriendForm from './components/AddFriendForm';
 import FriendsList from './components/Friends';
 
 import './App.css';
@@ -9,7 +10,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      friends: []
+      friends: [],
+      newFriend: {name: '', age: 0, email: ''},
+      nameInput: '',
+      ageInput: '',
+      emailInput: ''
     }
   }
 
@@ -19,11 +24,22 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
+  //tracks data in input fields
+  inputChangeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  //handles form submission
+  addFriendHandler = e => {
+    e.preventDefault();
+
+  }
+
   render() {
-    console.log(this.state.friends);
     return (
       <div className="App">
         <FriendsList friendsList={this.state.friends} />
+        <AddFriendForm inputChangeHandler={this.inputChangeHandler} />
       </div>
     );
   }
