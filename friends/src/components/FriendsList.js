@@ -4,7 +4,9 @@ import Friend from './Friend';
 
 function FriendsList(props) {
     return (
-        props.friendsList.map(f => <Friend friendObj={f} key={f.id} deleteFriend={props.deleteFriend}/>)
+        <section>
+            {props.friendsList.map(f => <Friend friendObj={f} key={f.id} deleteFriend={props.deleteFriend} updateFriend={props.updateFriend}/>)}
+        </section>
     );
 }
 

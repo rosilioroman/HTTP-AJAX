@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import AddFriend from './components/AddFriend';
 import FriendsList from './components/FriendsList';
 import PageHeader from './components/PageHeader';
+import UpdateFriend from './components/UpdateFriend';
 
 import './App.css';
 
@@ -35,13 +36,13 @@ class App extends Component {
       return console.log('Error: new friend cannot be added');
     }
 
-    //create a new object with age as an integer
+    //create a new object and update its age value
     const friendWithAge = {
       ...friend,
       age: ageAsInteger
     }
 
-    //pass this friendWithAge object as parameter in the axios.POST request
+    //pass this friendWithAge object as parameter in the axios.POST method
     axios.post('http://localhost:5000/friends', friendWithAge)
     .then(res => this.setState({ friends: res.data }))
     .catch(err => console.log(err));
@@ -49,10 +50,19 @@ class App extends Component {
 
   //handle the deletion of a friend
   deleteFriendHandler = (friendId) => {
-
     //friendId comes from the id property of the friend object that will be deleted
     axios.delete(`http://localhost:5000/friends/${friendId}`)
     .then(res => this.setState({ friends: res.data }))
+    .catch(err => console.log(err));
+  }
+
+  //handles updating a friend's info
+  updateFriendHandler = (friendId, update, goHome) => {
+    axios.put(`http://localhost:5000/friends/${friendId}`, update)
+    .then(res => {
+      this.setState({ friends: res.data });
+      goHome.push('/');
+    })
     .catch(err => console.log(err));
   }
 
@@ -60,7 +70,6 @@ class App extends Component {
     return (
       <div className="App">
         <PageHeader />
-
         <Route 
           path="/add" 
           render={ props => 
@@ -70,14 +79,25 @@ class App extends Component {
             />
           } 
         />
-
+        <Route 
+          path="/friends/:id/update"
+          render={props => 
+            <UpdateFriend 
+              {...props} 
+              handleUpdates={this.handleUpdates}
+              updatedFriend={this.state.updatedFriend}
+              updateFriendHandler={this.updateFriendHandler}
+            />
+          }
+        />
         <Route 
           path="/" 
           render={ props => 
             <FriendsList 
               {...props} 
               friendsList={this.state.friends} 
-              deleteFriend={this.deleteFriendHandler} 
+              deleteFriend={this.deleteFriendHandler}
+              updateFriend={this.updateFriendHandler} 
             />
           } 
         />
