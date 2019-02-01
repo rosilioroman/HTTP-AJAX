@@ -1,5 +1,4 @@
 import React from 'react';
-import PropType from 'prop-types';
 
 function AddFriendForm(props) {
     return(
@@ -28,15 +27,6 @@ function AddFriendForm(props) {
             <button>Add</button>
         </form>
     );
-}
-
-AddFriendForm.propType = {
-    newFriend: PropType.shape({
-        name: PropType.string,
-        age: PropType.number,
-        email: PropType.string
-    }),
-    handleChanges: PropType.func
 }
 
 export default AddFriendForm;

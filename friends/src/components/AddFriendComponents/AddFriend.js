@@ -23,7 +23,6 @@ class AddFriend extends Component {
     addFriend = e => {
         e.preventDefault();
         this.props.addFriendHandler(this.state.newFriend); //pass the current newFriend object as an argument
-
         //reset the newFriend object
         this.setState({
             newFriend: {

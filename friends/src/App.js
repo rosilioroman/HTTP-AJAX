@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Route } from 'react-router-dom';
 
-import AddFriend from './components/AddFriend';
-import FriendsList from './components/FriendsList';
+import AddFriend from './components/AddFriendComponents/AddFriend';
+import FriendsList from './components/FriendComponents/FriendsList';
 import PageHeader from './components/PageHeader';
-import UpdateFriend from './components/UpdateFriend';
+import UpdateFriend from './components/UpdateFriendComponents/UpdateFriend';
 
 import './App.css';
 
