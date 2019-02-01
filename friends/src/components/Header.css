@@ -1,0 +1,25 @@
+.app-header {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-friend-btn {
+    font-size: 0.85em;
+    display: flex;
+    padding: 0 1%;
+    align-items: center;
+    border: 2px solid #C5C6C7;
+    background-color: #45A29E;
+    color: #0B0C10;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 10%;
+    height: 35px;
+}
+
+.add-friend-btn:hover {
+    cursor: pointer;
+    background-color: #66FCF1;
+}

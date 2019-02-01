@@ -6,10 +6,12 @@ import './Header.css';
 function PageHeader() {
     return (
         <header className="app-header">
-          <h1>Friends List</h1>
-          <div className="links">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/add">Add Friend</NavLink>
+          <h1 className="title">{` { FriendsList } `}</h1>
+          <div className="add-friend-btn">
+            <NavLink to="/add" activeClassName="active-link">(+) Add Friend</NavLink>
+          </div>
+          <div className="home-ink">
+            <NavLink to="/" activeClassName="active-link">Home</NavLink>
           </div>
         </header>
     );

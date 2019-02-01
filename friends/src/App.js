@@ -73,38 +73,44 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PageHeader />
-        <Route 
-          path="/add" 
-          render={ props => 
-            <AddFriend 
-              {...props} 
-              addFriendHandler={this.addFriendHandler}
-            />
-          } 
-        />
-        <Route 
-          path="/friends/:id/update"
-          render={props => 
-            <UpdateFriend 
-              {...props} 
-              handleUpdates={this.handleUpdates}
-              updatedFriend={this.state.updatedFriend}
-              updateFriendHandler={this.updateFriendHandler}
-            />
-          }
-        />
-        <Route 
-          path="/" 
-          render={ props => 
-            <FriendsList 
-              {...props} 
-              friendsList={this.state.friends} 
-              deleteFriend={this.deleteFriendHandler}
-              updateFriend={this.updateFriendHandler} 
-            />
-          } 
-        />
+        <div className="header-container content">
+          <PageHeader />
+        </div>
+        <div className="modifiers-container content">
+          <Route 
+            path="/add" 
+            render={ props => 
+              <AddFriend 
+                {...props} 
+                addFriendHandler={this.addFriendHandler}
+              />
+            } 
+          />
+          <Route 
+            path="/friends/:id/update"
+            render={props => 
+              <UpdateFriend 
+                {...props} 
+                handleUpdates={this.handleUpdates}
+                updatedFriend={this.state.updatedFriend}
+                updateFriendHandler={this.updateFriendHandler}
+              />
+            }
+          />
+        </div>
+        <div className="friends-list-container content">
+          <Route 
+            path="/" 
+            render={ props => 
+              <FriendsList 
+                {...props} 
+                friendsList={this.state.friends} 
+                deleteFriend={this.deleteFriendHandler}
+                updateFriend={this.updateFriendHandler} 
+              />
+            } 
+          />
+        </div>
       </div>
     );
   }
