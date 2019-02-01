@@ -49,19 +49,23 @@ class App extends Component {
   }
 
   //handle the deletion of a friend
-  deleteFriendHandler = (friendId) => {
+  deleteFriendHandler = (friendId, propsHistory) => {
     //friendId comes from the id property of the friend object that will be deleted
     axios.delete(`http://localhost:5000/friends/${friendId}`)
-    .then(res => this.setState({ friends: res.data }))
+    .then(res => {
+        this.setState({ friends: res.data })
+        propsHistory.push('/');
+      }
+    )
     .catch(err => console.log(err));
   }
 
   //handles updating a friend's info
-  updateFriendHandler = (friendId, update, goHome) => {
+  updateFriendHandler = (friendId, update, propsHistory) => {
     axios.put(`http://localhost:5000/friends/${friendId}`, update)
     .then(res => {
       this.setState({ friends: res.data });
-      goHome.push('/');
+      propsHistory.push('/'); //go back to the home route
     })
     .catch(err => console.log(err));
   }
