@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import AddFriendForm from './AddFriendForm';
 
+import './Add.css';
+
 class AddFriend extends Component {
     constructor(props) {
         super(props);
@@ -36,7 +38,7 @@ class AddFriend extends Component {
     render() {
         return (
             <div className="add-friend-wrapper">
-                <h2>Add a new friend:</h2>
+                <h2>{`{ Add a new friend }:`}</h2>
                 <AddFriendForm 
                     newFriend={this.state.newFriend} 
                     handleChanges={this.handleChanges}

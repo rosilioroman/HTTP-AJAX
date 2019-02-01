@@ -4,10 +4,13 @@
   align-items: center;
 }
 
-.header-container {
+.content {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.header-container {
   border-bottom: 1px solid #C5C6C7;
   background-color: #1F2833;
 }

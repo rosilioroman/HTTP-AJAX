@@ -12,11 +12,14 @@
     align-items: center;
     border: 2px solid #C5C6C7;
     background-color: #45A29E;
-    color: #0B0C10;
     font-weight: bold;
     border-radius: 5px;
     width: 10%;
     height: 35px;
+}
+
+.add-friend-btn div {
+    color: #0B0C10;
 }
 
 .add-friend-btn:hover {
